@@ -36,7 +36,7 @@ const ListOfTags = forwardRef(function (
   }, [items, onClick]);
 
   return (
-    <div className={styles.container}>
+    <div id="tag-focus" className={styles.container}>
       <div className={styles.postContainer}>{header}</div>
       <div className={styles.bodyContainer}>{isOpen && body}</div>
       {!loading && (

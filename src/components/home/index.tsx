@@ -51,6 +51,12 @@ function Home() {
     }
   }, [tag, reset]);
 
+  useEffect(() => {
+    if (posts.length > 0) {
+      document.getElementById("tag-focus")?.focus;
+    }
+  }, [posts.length]);
+
   const handleClick = useCallback<React.MouseEventHandler<HTMLSpanElement>>(
     (event) => {
       event.preventDefault();
