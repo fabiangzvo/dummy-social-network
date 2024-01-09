@@ -1,0 +1,6 @@
+.container {
+  height: auto;
+  width: 100vw;
+  overflow: hidden;
+  white-space: nowrap;
+}
