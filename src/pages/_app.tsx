@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
       name: "facebook",
       Component: FacebookProvider,
       config: {
-        appId: "2260913770903039",
+        appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
       },
     },
     {
