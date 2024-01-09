@@ -5,7 +5,7 @@ import {
   getResponse,
   onRequestConfig,
   rejectResponse,
-} from "@shared/AxiosConfig";
+} from "@shared/axiosConfig";
 
 const dummyApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_DUMMY_API_HOST,

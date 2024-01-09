@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@react-oauth/google": "^0.12.1",
     "axios": "^1.6.5",
+    "framer-motion": "^10.17.9",
+    "intersection-observer": "^0.12.2",
+    "lodash.get": "^4.4.2",
+    "moment": "^2.30.1",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-facebook": "^9.0.12",
+    "react-facebook-login": "^4.1.1",
+    "react-icons": "^4.12.0",
+    "react-infinite-scroll-hook": "^4.1.1"
   },
   "devDependencies": {
+    "@types/lodash.get": "^4.4.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
