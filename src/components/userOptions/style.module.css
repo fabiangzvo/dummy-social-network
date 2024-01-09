@@ -1,0 +1,24 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.name {
+  font-weight: 900;
+}
+
+.contentCentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

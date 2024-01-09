@@ -1,0 +1,13 @@
+.containerBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.name {
+  margin-top: 1em;
+}

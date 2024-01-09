@@ -1,0 +1,12 @@
+.head {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: default;
+}
+
+.container {
+  display: flex;
+}

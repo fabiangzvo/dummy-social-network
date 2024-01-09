@@ -1,0 +1,10 @@
+.divider {
+  position: relative;
+  padding: 40px;
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+  background-color: white;
+}
