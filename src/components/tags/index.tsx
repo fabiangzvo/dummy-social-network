@@ -1,8 +1,6 @@
-import { useCallback, useState, MouseEventHandler } from "react";
+import { useState, MouseEventHandler, useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 
-import { FetchDataInterface } from "@/types/Paginate";
-import useDataFetch from "@hooks/useDataFetch";
 import { getTags } from "@api/tag";
 import ListOfTags from "@components/listOfTags";
 
@@ -17,16 +15,12 @@ function Tags(props: TagsProps) {
   const { onClick, isSelectedTag = false } = props;
 
   const [tags, setTags] = useState([] as string[]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchData = useCallback(
-    async ({ page }: FetchDataInterface) => {
-      const {
-        data,
-        total,
-        page: currentPage,
-      } = await getTags({
-        page,
-      });
+  useEffect(() => {
+    async function getInitialData() {
+      setLoading(true);
+      const { data } = await getTags({});
 
       const regex = new RegExp(/null|^(\s|\t|\()\1*/g);
 
@@ -40,27 +34,26 @@ function Tags(props: TagsProps) {
 
           if (isEmpty) return tagList;
 
-          return [...tagList, currentValue];
+          const tag = currentValue.replaceAll(/[\s]{2,}/g, "");
+
+          return [...tagList, tag];
         },
         []
       );
 
-      setTags([...tags, ...listOfTags.slice(0, 300)]);
+      setTags(listOfTags);
 
-      return { total, page: currentPage };
-    },
-    [tags]
-  );
+      setLoading(false);
+    }
 
-  const { ref, loading, page } = useDataFetch({ fetchData });
+    getInitialData();
+  }, []);
 
   return (
     <Box className={style.container}>
       <ListOfTags
         items={tags}
         loading={loading}
-        ref={ref}
-        page={page}
         onClick={onClick}
         isSelectedTag={isSelectedTag}
       />

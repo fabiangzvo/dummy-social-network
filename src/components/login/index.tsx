@@ -96,12 +96,11 @@ function Login() {
           "email",
         ],
       });
-      console.log(profile);
+
       profile && setUser(profile as FacebookUser);
 
       refreshAuthContext();
     } catch (e) {
-      console.log(e);
       toast({
         title: "sign in failed",
         description: "could not connect with facebook, please try again later",

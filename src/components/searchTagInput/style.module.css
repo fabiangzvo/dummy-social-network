@@ -1,0 +1,8 @@
+.searchInput {
+  grid-column: 1/5;
+}
+
+.searchInput > input:focus-visible {
+  border-color: inherit;
+  box-shadow: none;
+}

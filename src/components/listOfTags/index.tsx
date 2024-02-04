@@ -1,44 +1,104 @@
-import { forwardRef, ForwardedRef, useMemo, MouseEventHandler } from "react";
-import { Tag, Button, useDisclosure } from "@chakra-ui/react";
+import { useMemo, MouseEventHandler, useState, useCallback } from "react";
+import {
+  Tag,
+  Button,
+  useDisclosure,
+  Grid,
+  GridItem,
+  Tooltip,
+} from "@chakra-ui/react";
+import cs from "classnames";
 
 import Loader from "@components/loader";
 import Text from "@components/text";
+import SearchTagInput from "@components/searchTagInput";
 
 import styles from "./style.module.css";
 
 interface ListOfTagsProps {
   items: Array<string>;
   loading: boolean;
-  page: number;
   onClick: MouseEventHandler<HTMLElement>;
   isSelectedTag?: boolean;
 }
 
-const ListOfTags = forwardRef(function (
-  props: ListOfTagsProps,
-  ref: ForwardedRef<HTMLDivElement>
-) {
-  const { items, loading, page, onClick, isSelectedTag } = props;
+function ListOfTags(props: ListOfTagsProps): JSX.Element {
+  const { items, loading, onClick, isSelectedTag } = props;
 
+  const [foundTags, setFoundTags] = useState<Array<string>>([]);
+  const [isSearched, setIsSearched] = useState<boolean>(false);
+  const [searchText, setSearchText] = useState<string>("");
   const { isOpen, onToggle } = useDisclosure();
 
-  const { header, body } = useMemo(() => {
-    const tags = items.map((tag) => (
-      <Tag colorScheme="red" key={tag} className={styles.tag} onClick={onClick}>
-        <Text fontSize="lg">{tag.replace(/^\s/, "")}</Text>
-      </Tag>
-    ));
+  const handleClick = useCallback(
+    (text: string) => {
+      const result = items.filter((tag) => tag.includes(text));
+      setFoundTags(result);
+      setIsSearched(true);
+    },
+    [items]
+  );
 
-    const header = tags.slice(0, 24);
-    const body = tags.slice(24);
+  const handleCleanFilter = useCallback<MouseEventHandler<HTMLElement>>(
+    (e) => {
+      setSearchText("");
+      setFoundTags([]);
+      setIsSearched(false);
 
-    return { header, body };
-  }, [items, onClick]);
+      onClick(e);
+    },
+    [onClick]
+  );
+
+  const tags = useMemo(() => {
+    const tags = isSearched ? foundTags : items;
+
+    return tags.slice(0, 300).map((tag) => {
+      const needTooltip = tag.length > 9;
+
+      return (
+        <Tooltip key={tag} label={tag} isDisabled={!needTooltip} hasArrow>
+          <Tag
+            colorScheme="red"
+            className={styles.tag}
+            onClick={onClick}
+            as={GridItem}
+          >
+            <Text fontSize="lg" className={styles.tagText}>
+              {tag}
+            </Text>
+          </Tag>
+        </Tooltip>
+      );
+    });
+  }, [foundTags, isSearched, items, onClick]);
+
+  const component = useMemo(() => {
+    if (loading) return null;
+
+    return (
+      <Grid
+        templateColumns="repeat(15, 1fr)"
+        columnGap="10px"
+        rowGap="10px"
+        className={cs({
+          [styles.hideTags]: !isOpen,
+          [styles.containerTags]: true,
+        })}
+      >
+        <SearchTagInput
+          handleClick={handleClick}
+          value={searchText}
+          setter={setSearchText}
+        />
+        {tags}
+      </Grid>
+    );
+  }, [handleClick, isOpen, loading, searchText, tags]);
 
   return (
     <div id="tag-focus" className={styles.container}>
-      <div className={styles.postContainer}>{header}</div>
-      <div className={styles.bodyContainer}>{isOpen && body}</div>
+      {component}
       {!loading && (
         <Button colorScheme="blue" variant="ghost" onClick={onToggle}>
           <Text fontSize="lg">
@@ -46,18 +106,13 @@ const ListOfTags = forwardRef(function (
           </Text>
         </Button>
       )}
-      {isSelectedTag && (
-        <Button colorScheme="blue" variant="ghost" onClick={onClick}>
-          <Text fontSize="lg" onClick={onClick}>
-            clean filter
-          </Text>
+      {(isSelectedTag || isSearched) && (
+        <Button colorScheme="blue" variant="ghost" onClick={handleCleanFilter}>
+          <Text fontSize="lg">clean filter</Text>
         </Button>
       )}
-      <div ref={ref}>{loading && page !== 0 && <Loader />}</div>
     </div>
   );
-});
-
-ListOfTags.displayName = "ListOfTags";
+}
 
 export default ListOfTags;

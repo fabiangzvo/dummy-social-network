@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.6.5",
+    "classnames": "^2.5.1",
     "framer-motion": "^10.17.9",
     "intersection-observer": "^0.12.2",
     "lodash.get": "^4.4.2",

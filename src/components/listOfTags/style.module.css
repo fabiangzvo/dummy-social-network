@@ -13,10 +13,11 @@
 
 .tag {
   min-width: auto;
-  margin: 0.5em;
-  margin-left: 0;
   cursor: pointer;
   display: inline-block;
+  height: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .bodyContainer {
@@ -35,4 +36,19 @@
   flex-direction: column;
   display: block;
   padding-left: 0.5em;
+  padding-right:1.5em;
+}
+
+.hideTags {
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.tagText {
+  padding:5px;
+  overflow: hidden;
+}
+
+.containerTags{
+  margin-bottom: 0.5em;
 }

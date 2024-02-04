@@ -28,7 +28,6 @@ function UserOptions() {
 
     const picture = (_get(user, "picture.data.url", "") ||
       _get(user, "picture", "")) as string;
-    console.log(picture);
 
     return { picture };
   }, [user]);
