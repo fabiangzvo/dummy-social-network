@@ -10,6 +10,7 @@ import {
 import cs from "classnames";
 
 import Text from "@components/text";
+import NoResultsFound from "@components/noResultsFound";
 import SearchTagInput from "@components/searchTagInput";
 
 import styles from "./style.module.css";
@@ -59,6 +60,8 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
 
   const tags = useMemo(() => {
     const tags = isSearched ? foundTags : items;
+
+    if (isSearched && foundTags.length < 1) return <NoResultsFound />;
 
     return tags.slice(0, 300).map((tag) => {
       const needTooltip = tag.length > 9;
