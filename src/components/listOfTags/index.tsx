@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import cs from "classnames";
 
-import Loader from "@components/loader";
 import Text from "@components/text";
 import SearchTagInput from "@components/searchTagInput";
 
@@ -30,11 +29,19 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
   const [searchText, setSearchText] = useState<string>("");
   const { isOpen, onToggle } = useDisclosure();
 
-  const handleClick = useCallback(
+  const onSearchTag = useCallback(
     (text: string) => {
-      const result = items.filter((tag) => tag.includes(text));
-      setFoundTags(result);
-      setIsSearched(true);
+      const isEmpty = text === "";
+
+      if (!isEmpty) {
+        const result = items.filter((tag) => tag.includes(text));
+
+        setFoundTags(result);
+        setIsSearched(true);
+      } else {
+        setIsSearched(false);
+        setFoundTags([]);
+      }
     },
     [items]
   );
@@ -87,14 +94,14 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
         })}
       >
         <SearchTagInput
-          handleClick={handleClick}
+          onSearchTag={onSearchTag}
           value={searchText}
           setter={setSearchText}
         />
         {tags}
       </Grid>
     );
-  }, [handleClick, isOpen, loading, searchText, tags]);
+  }, [onSearchTag, isOpen, loading, searchText, tags]);
 
   return (
     <div id="tag-focus" className={styles.container}>

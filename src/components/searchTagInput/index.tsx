@@ -11,28 +11,34 @@ import { ImSearch } from "react-icons/im";
 import styles from "./style.module.css";
 
 interface SearchTagInputProps {
-  handleClick: (text: string) => void;
+  onSearchTag: (text: string) => void;
   setter: (text: string) => void;
   value: string;
 }
 
 function SearchTagInput(props: SearchTagInputProps) {
-  const { handleClick, setter, value } = props;
+  const { onSearchTag, setter, value } = props;
 
   const ref = useRef<HTMLButtonElement>(null);
 
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    (e) => setter(e.target.value),
-    [setter]
+    (e) => {
+      const { value } = e.target;
+
+      if (value === "") onSearchTag(value);
+
+      setter(value);
+    },
+    [setter, onSearchTag]
   );
 
   const onClick = useCallback<MouseEventHandler<HTMLButtonElement>>(
     (e) => {
       e.preventDefault();
 
-      handleClick(value);
+      onSearchTag(value);
     },
-    [handleClick, value]
+    [onSearchTag, value]
   );
 
   const handleKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>(
