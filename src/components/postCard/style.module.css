@@ -29,11 +29,11 @@
 }
 
 .tagItem {
-  margin-right: 1em;
+  margin: 0 0.5em 0.5em 0;
 }
 
-#cardMdContainer {
-  margin: 2em;
+#cardLgContainer {
+  margin: 1em;
   width: 100%;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   z-index: 0;

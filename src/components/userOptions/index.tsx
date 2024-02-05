@@ -1,12 +1,5 @@
 import { useContext, useCallback, useMemo } from "react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Avatar,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Avatar } from "@chakra-ui/react";
 import { HiChevronDown } from "react-icons/hi";
 import { googleLogout } from "@react-oauth/google";
 import _get from "lodash.get";
@@ -14,6 +7,7 @@ import _get from "lodash.get";
 import Text from "@components/text";
 import { UserInfoContext } from "@context/googleUserInfo";
 import { AuthContext } from "@context/AuthContext";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -21,7 +15,7 @@ function UserOptions() {
   const { user } = useContext(UserInfoContext);
   const { refreshAuthContext, logout } = useContext(AuthContext);
 
-  const [isMd] = useMediaQuery("(max-width: 1024px)");
+  const isLg = useMediaQuery("(max-width: 1024px)");
 
   const { picture } = useMemo(() => {
     if (!user) return { picture: "" };
@@ -39,7 +33,7 @@ function UserOptions() {
   }, [logout]);
 
   const element = (
-    <div className={isMd ? styles.contentCentered : styles.content}>
+    <div className={isLg ? styles.contentCentered : styles.content}>
       <Text className={styles.name} fontSize="xl">
         {user?.name}
       </Text>
@@ -51,7 +45,7 @@ function UserOptions() {
     <Menu>
       <MenuButton as={"button"}>
         <div className={styles.container}>
-          {!isMd && element}
+          {!isLg && element}
           &emsp;
           <Avatar src={picture} name={user?.name} />
           &emsp;
@@ -59,7 +53,7 @@ function UserOptions() {
         </div>
       </MenuButton>
       <MenuList>
-        {isMd && (
+        {isLg && (
           <MenuItem as="span" minH="40px">
             {element}
           </MenuItem>

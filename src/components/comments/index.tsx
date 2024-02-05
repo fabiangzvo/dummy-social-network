@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import Image from "next/image";
-import { SimpleGrid, Box, Divider, useMediaQuery } from "@chakra-ui/react";
+import { SimpleGrid, Box, Divider } from "@chakra-ui/react";
 
 import Modal from "@components/modal";
 import { getCommentsByPost } from "@api/comment";
@@ -11,6 +11,7 @@ import ListOfComments from "@components/listOfComments";
 import UserCardHeader from "@components/userCardHeader";
 import Text from "@components/text";
 import Loader from "@components/loader";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -28,7 +29,7 @@ function Comments(props: CommentsProps) {
   const { isOpen, onClose, postId, image, description, name, photo } = props;
 
   const [comments, setComments] = useState([] as CommentList);
-  const [isMd] = useMediaQuery("(max-width: 1024px)");
+  const isLg = useMediaQuery("(max-width: 1024px)");
 
   const fetchData = useCallback(
     async ({ page }: FetchDataInterface) => {
@@ -56,7 +57,7 @@ function Comments(props: CommentsProps) {
     <Modal onClose={onClose} isOpen={isOpen} size="6xl">
       <SimpleGrid
         className={styles.container}
-        minH={isMd ? "auto" : "50vh"}
+        minH={isLg ? "auto" : "50vh"}
         columns={2}
         spacing={2}
       >
@@ -76,11 +77,11 @@ function Comments(props: CommentsProps) {
             {description}
           </Text>
           <Divider />
-          {!isMd && element}
+          {!isLg && element}
           <div ref={ref}>{loading && page !== 0 && <Loader />}</div>
         </Box>
       </SimpleGrid>
-      {isMd && element}
+      {isLg && element}
     </Modal>
   );
 }

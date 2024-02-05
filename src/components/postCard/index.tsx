@@ -9,12 +9,12 @@ import {
   CardBody,
   CardFooter,
   Button,
-  useMediaQuery,
 } from "@chakra-ui/react";
 
 import Text from "@components/text";
 import { Post } from "@/types/Post";
 import Comments from "@components/comments";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 import UserCardHeader from "@components/userCardHeader";
 
 import styles from "./style.module.css";
@@ -27,7 +27,7 @@ function PostCard(props: PostCardProps) {
   const { text, image, likes, owner, publishDate, tags, id, className } = props;
 
   const { isOpen, onToggle, onClose } = useDisclosure();
-  const [isMd] = useMediaQuery("(max-width: 1024px)");
+  const isLg = useMediaQuery("(max-width: 1024px)");
 
   const { tagList, fullName, publish } = useMemo(() => {
     const fullName = `${owner.firstName} ${owner.lastName}`;
@@ -48,7 +48,7 @@ function PostCard(props: PostCardProps) {
 
   return (
     <Card
-      id={isMd ? styles.cardMdContainer : styles.cardContainer}
+      id={isLg ? styles.cardLgContainer : styles.cardContainer}
       className={className}
       maxW="xl"
     >

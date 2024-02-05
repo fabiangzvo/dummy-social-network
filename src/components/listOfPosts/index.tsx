@@ -4,6 +4,7 @@ import { Post } from "@/types/Post";
 import PostCard from "@components/postCard";
 import Loader from "@components/loader";
 import NoResultsFound from "@components/noResultsFound";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -18,6 +19,8 @@ const ListOfPosts = forwardRef(function (
 ) {
   const { items, loading } = props;
 
+  const isLg = useMediaQuery("(max-width: 1024px)");
+
   const posts = useMemo(() => {
     if (items.length < 1 && !loading) return <NoResultsFound />;
 
@@ -25,7 +28,7 @@ const ListOfPosts = forwardRef(function (
   }, [items, loading]);
 
   return (
-    <div className={styles.postContainer}>
+    <div className={isLg ? styles.lgContainer : styles.postContainer}>
       {posts}
       <div ref={ref}>{loading && <Loader />}</div>
     </div>

@@ -1,16 +1,11 @@
 import { useMemo } from "react";
-import {
-  SimpleGrid,
-  Box,
-  Divider,
-  AbsoluteCenter,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { SimpleGrid, Box, Divider, AbsoluteCenter } from "@chakra-ui/react";
 import _get from "lodash.get";
 
 import { UserDataList, UserFull } from "@/types/User";
 import UserInfoItem from "@components/userInfoItem";
 import Text from "@components/text";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -23,7 +18,7 @@ interface UserInfoSectionProps {
 function UserInfoSection(props: UserInfoSectionProps) {
   const { items, title, user } = props;
 
-  const [isMd] = useMediaQuery("(max-width: 1024px)");
+  const isLg = useMediaQuery("(max-width: 1024px)");
 
   const fields = useMemo(
     () =>
@@ -45,7 +40,7 @@ function UserInfoSection(props: UserInfoSectionProps) {
           </Text>
         </AbsoluteCenter>
       </Box>
-      <SimpleGrid width="100%" columns={isMd ? 1 : 2} spacing={2}>
+      <SimpleGrid width="100%" columns={isLg ? 1 : 2} spacing={2}>
         {fields}
       </SimpleGrid>
     </>

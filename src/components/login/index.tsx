@@ -3,14 +3,7 @@ import { useCallback, useContext } from "react";
 import Image from "next/image";
 import { useGoogleLogin, TokenResponse } from "@react-oauth/google";
 import { FcGoogle } from "react-icons/fc";
-import {
-  Button,
-  SimpleGrid,
-  Box,
-  Heading,
-  useMediaQuery,
-  useToast,
-} from "@chakra-ui/react";
+import { Button, SimpleGrid, Box, Heading, useToast } from "@chakra-ui/react";
 import { Passion_One } from "next/font/google";
 import { useLogin } from "react-facebook";
 import { ImFacebook2 } from "react-icons/im";
@@ -20,6 +13,7 @@ import { AuthContext } from "@context/AuthContext";
 import { UserInfoContext } from "@context/googleUserInfo";
 import { FacebookUser } from "@/types/FacebookUser";
 import Text from "@components/text";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -33,7 +27,7 @@ function Login() {
   const { refreshAuthContext, logout } = useContext(AuthContext);
   const { setUser } = useContext(UserInfoContext);
 
-  const [isMd] = useMediaQuery("(max-width: 1024px)");
+  const isLg = useMediaQuery("(max-width: 1024px)");
   const { init } = useFacebook();
   const toast = useToast();
 
@@ -117,13 +111,13 @@ function Login() {
     <SimpleGrid
       as="main"
       className={styles.container}
-      columns={isMd ? 1 : 2}
+      columns={isLg ? 1 : 2}
       spacing={2}
     >
       <Box className={styles.cardContent}>
         <Image src="/home.png" alt="image" height={1276} width={1206} />
       </Box>
-      <Box className={isMd ? styles.contentMd : styles.content}>
+      <Box className={isLg ? styles.contentLg : styles.content}>
         <div>
           <Heading id={styles.title} style={passionOne.style} size="4xl">
             The new social network!
