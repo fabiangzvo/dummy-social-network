@@ -7,6 +7,7 @@ import {
 } from "react";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ImSearch } from "react-icons/im";
+import cs from "classnames";
 
 import styles from "./style.module.css";
 
@@ -14,10 +15,11 @@ interface SearchTagInputProps {
   onSearchTag: (text: string) => void;
   setter: (text: string) => void;
   value: string;
+  isLg: boolean;
 }
 
 function SearchTagInput(props: SearchTagInputProps) {
-  const { onSearchTag, setter, value } = props;
+  const { onSearchTag, setter, value, isLg } = props;
 
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -51,7 +53,9 @@ function SearchTagInput(props: SearchTagInputProps) {
   );
 
   return (
-    <InputGroup className={styles.searchInput}>
+    <InputGroup
+      className={cs({ [styles.searchInput]: !isLg, [styles.lgCols]: isLg })}
+    >
       <Input
         variant="outline"
         height="30px"

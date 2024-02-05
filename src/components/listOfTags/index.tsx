@@ -12,6 +12,7 @@ import cs from "classnames";
 import Text from "@components/text";
 import NoResultsFound from "@components/noResultsFound";
 import SearchTagInput from "@components/searchTagInput";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import styles from "./style.module.css";
 
@@ -29,6 +30,7 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
   const [isSearched, setIsSearched] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>("");
   const { isOpen, onToggle } = useDisclosure();
+  const isLg = useMediaQuery("(max-width: 1024px)");
 
   const onSearchTag = useCallback(
     (text: string) => {
@@ -88,15 +90,17 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
 
     return (
       <Grid
-        templateColumns="repeat(15, 1fr)"
+        templateColumns={isLg ? "repeat(6, 1fr)" : "repeat(15, 1fr)"}
         columnGap="10px"
         rowGap="10px"
         className={cs({
-          [styles.hideTags]: !isOpen,
           [styles.containerTags]: true,
+          [styles.hideTags]: !isLg && !isOpen,
+          [styles.hideLgTags]: isLg && !isOpen,
         })}
       >
         <SearchTagInput
+          isLg={isLg}
           onSearchTag={onSearchTag}
           value={searchText}
           setter={setSearchText}
@@ -104,10 +108,13 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
         {tags}
       </Grid>
     );
-  }, [onSearchTag, isOpen, loading, searchText, tags]);
+  }, [loading, isLg, isOpen, onSearchTag, searchText, tags]);
 
   return (
-    <div id="tag-focus" className={styles.container}>
+    <div
+      id="tag-focus"
+      className={cs({ [styles.container]: true, [styles.marginRight]: isLg })}
+    >
       {component}
       {!loading && (
         <Button colorScheme="blue" variant="ghost" onClick={onToggle}>
