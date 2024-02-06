@@ -1,10 +1,18 @@
 import { useContext, useCallback, useMemo } from "react";
-import { Menu, MenuButton, MenuList, MenuItem, Avatar } from "@chakra-ui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Avatar,
+  MenuDivider,
+} from "@chakra-ui/react";
 import { HiChevronDown } from "react-icons/hi";
 import { googleLogout } from "@react-oauth/google";
 import _get from "lodash.get";
 
 import Text from "@components/text";
+import SwitchTheme from "@components/switchTheme";
 import { UserInfoContext } from "@context/googleUserInfo";
 import { AuthContext } from "@context/AuthContext";
 import { useMediaQuery } from "@hooks/useMediaQuery";
@@ -13,7 +21,7 @@ import styles from "./style.module.css";
 
 function UserOptions() {
   const { user } = useContext(UserInfoContext);
-  const { refreshAuthContext, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   const isLg = useMediaQuery("(max-width: 1024px)");
 
@@ -34,7 +42,7 @@ function UserOptions() {
 
   const element = (
     <div className={isLg ? styles.contentCentered : styles.content}>
-      <Text className={styles.name} fontSize="xl">
+      <Text className={styles.name} fontSize="xl" isTitle>
         {user?.name}
       </Text>
       <Text fontSize="md">{user?.email}</Text>
@@ -53,12 +61,13 @@ function UserOptions() {
         </div>
       </MenuButton>
       <MenuList>
-        {isLg && (
-          <MenuItem as="span" minH="40px">
-            {element}
-          </MenuItem>
-        )}
-        <MenuItem minH="40px" onClick={handleClick}>
+        {isLg && <div>{element}</div>}
+        <div className={styles.themeContainer}>
+          <span>Mode:&nbsp;</span>
+          <SwitchTheme />
+        </div>
+        <MenuDivider />
+        <MenuItem minH="40px" onClick={handleClick} className={styles.item}>
           Logout
         </MenuItem>
       </MenuList>

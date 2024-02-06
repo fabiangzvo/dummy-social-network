@@ -1,18 +1,31 @@
 import { Text as ChakraText, TextProps } from "@chakra-ui/react";
-import { Children } from "react";
 import { Figtree } from "next/font/google";
+import cs from "classnames";
+
+import styles from "./style.module.css";
 
 const figtree = Figtree({
   subsets: ["latin"],
   variable: "--figtree",
 });
 
-interface TextPropsInterface extends TextProps {}
+interface TextComponentProps extends TextProps {
+  isTitle?: boolean;
+}
 
-function Text(props: TextProps) {
-  const { children, ...textProps } = props;
+function Text(props: TextComponentProps) {
+  const { isTitle = false, children, className = "", ...textProps } = props;
+
   return (
-    <ChakraText style={figtree.style} {...textProps}>
+    <ChakraText
+      className={cs({
+        [className]: true,
+        [styles.text]: !isTitle,
+        [styles.title]: isTitle,
+      })}
+      style={figtree.style}
+      {...textProps}
+    >
       {children}
     </ChakraText>
   );

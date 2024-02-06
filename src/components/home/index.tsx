@@ -76,7 +76,7 @@ function Home() {
   );
 
   return (
-    <main id="main" className={`${AlbertSans.className}`}>
+    <main id="main" className={AlbertSans.className}>
       <Tags isSelectedTag={!!tag} onClick={handleClick} />
       <ListOfPosts items={posts} loading={loading} ref={ref} />
     </main>

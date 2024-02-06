@@ -41,7 +41,7 @@ function CommentList(props: ListOfComments) {
 
   if (commentList.length <= 0)
     return (
-      <Text fontSize="xl" className={styles.noContent}>
+      <Text fontSize="xl" className={styles.noContent} isTitle>
         No comments for this post
       </Text>
     );

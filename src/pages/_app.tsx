@@ -1,4 +1,5 @@
 "use client";
+
 import { Suspense } from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -9,6 +10,7 @@ import { useProviders } from "@hooks/useProviders";
 import { AuthProvider } from "@context/AuthContext";
 import { UserInfoProvider } from "@context/googleUserInfo";
 import Loader from "@components/loader";
+import theme from "@shared/theme";
 
 import "@shared/globals.css";
 
@@ -32,6 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
     {
       name: "chakra",
       Component: ChakraProvider,
+      config: {
+        theme,
+      },
     },
     {
       name: "google",

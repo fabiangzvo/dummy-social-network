@@ -6,8 +6,8 @@
   align-items: center;
   position: fixed;
   z-index: 1000;
-  border-bottom: 1px solid lightgray;
-  background-color: white;
+  border-bottom: 1px solid var(--paragraph);
+    background-color: var(--background);
 }
 
 .item {

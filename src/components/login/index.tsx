@@ -3,8 +3,7 @@ import { useCallback, useContext } from "react";
 import Image from "next/image";
 import { useGoogleLogin, TokenResponse } from "@react-oauth/google";
 import { FcGoogle } from "react-icons/fc";
-import { Button, SimpleGrid, Box, Heading, useToast } from "@chakra-ui/react";
-import { Passion_One } from "next/font/google";
+import { Button, SimpleGrid, Box, useToast } from "@chakra-ui/react";
 import { useLogin } from "react-facebook";
 import { ImFacebook2 } from "react-icons/im";
 import { useFacebook } from "react-facebook";
@@ -14,14 +13,10 @@ import { UserInfoContext } from "@context/googleUserInfo";
 import { FacebookUser } from "@/types/FacebookUser";
 import Text from "@components/text";
 import { useMediaQuery } from "@hooks/useMediaQuery";
+import Heading from "@components/heading";
+import SwitchTheme from "@components/switchTheme";
 
 import styles from "./style.module.css";
-
-const passionOne = Passion_One({
-  subsets: ["latin"],
-  variable: "--passion-one",
-  weight: "400",
-});
 
 function Login() {
   const { refreshAuthContext, logout } = useContext(AuthContext);
@@ -118,9 +113,10 @@ function Login() {
         <Image src="/home.png" alt="image" height={1276} width={1206} />
       </Box>
       <Box className={isLg ? styles.contentLg : styles.content}>
+        <SwitchTheme className={styles.themeButton} />
         <div>
-          <Heading id={styles.title} style={passionOne.style} size="4xl">
-            The new social network!
+          <Heading id={styles.title} size="4xl">
+            dummy social network!
           </Heading>
           <Text id={styles.description} fontSize="2xl">
             Our app is designed to connect you in an authentic way. Discover a

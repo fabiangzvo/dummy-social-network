@@ -25,7 +25,7 @@ function CommentItem(props: CommentItemProps) {
         textSecondary={publishText}
       />
       <Box className={styles.containerComment}>
-        <Text fontSize="xl" className={styles.comment}>
+        <Text fontSize="xl" className={styles.comment} isTitle>
           {message}
         </Text>
       </Box>

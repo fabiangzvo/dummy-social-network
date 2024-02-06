@@ -23,10 +23,20 @@ interface CommentsProps {
   description: string;
   name: string;
   photo: string;
+  publishedAt: string;
 }
 
 function Comments(props: CommentsProps) {
-  const { isOpen, onClose, postId, image, description, name, photo } = props;
+  const {
+    isOpen,
+    onClose,
+    postId,
+    image,
+    description,
+    name,
+    photo,
+    publishedAt,
+  } = props;
 
   const [comments, setComments] = useState([] as CommentList);
   const isLg = useMediaQuery("(max-width: 1024px)");
@@ -72,8 +82,12 @@ function Comments(props: CommentsProps) {
           />
         </Box>
         <Box className={styles.section}>
-          <UserCardHeader fullName={name} photo={photo} />
-          <Text className={styles.description} fontSize="xl">
+          <UserCardHeader
+            fullName={name}
+            photo={photo}
+            textSecondary={publishedAt}
+          />
+          <Text className={styles.description} fontSize="xl" isTitle>
             {description}
           </Text>
           <Divider />

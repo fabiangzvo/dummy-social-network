@@ -38,11 +38,7 @@
   flex-direction: column;
 }
 
-.name {
-  font-weight: 900;
+.fontColor {
   cursor: default;
-}
-
-.copyRight {
-  cursor: default;
+  color: var(--title);
 }

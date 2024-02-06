@@ -45,7 +45,7 @@ function UserInfo(props: UserInfoProps) {
       containerClass={styles.containerBody}
     >
       <Avatar src={userInfo.picture} size="2xl" name={userInfo.firstName} />
-      <Text fontSize="4xl">
+      <Text fontSize="4xl" className={styles.fontColor}>
         {userInfo.firstName} {userInfo.lastName}
       </Text>
       <UserInfoSection

@@ -22,3 +22,14 @@
   flex-direction: column;
   align-items: center;
 }
+
+.themeContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+.item:hover {
+  background-color: var(--shadow);
+}

@@ -12,7 +12,7 @@ type UserInfoItemProps = Omit<UserInfoItem, "key"> & {
 };
 
 function UserInfoItem(props: UserInfoItemProps) {
-  const { icon, value, label, type = "text", color = "#FED7D7" } = props;
+  const { icon, value, label, type = "text", color = "secondary" } = props;
 
   const formatValue = useMemo(() => {
     if (type === "date") {

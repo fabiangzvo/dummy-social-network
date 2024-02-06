@@ -3,13 +3,13 @@ import {
   Avatar,
   IconButton,
   CardHeader,
-  Heading,
   useDisclosure,
 } from "@chakra-ui/react";
 import { SlOptionsVertical } from "react-icons/sl";
 
 import UserInfo from "@components/userInfo";
 import Text from "@components/text";
+import Heading from "@components/heading";
 
 import styles from "./style.module.css";
 

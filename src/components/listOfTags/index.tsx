@@ -69,14 +69,15 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
       const needTooltip = tag.length > 9;
 
       return (
-        <Tooltip key={tag} label={tag} isDisabled={!needTooltip} hasArrow>
-          <Tag
-            colorScheme="red"
-            className={styles.tag}
-            onClick={onClick}
-            as={GridItem}
-          >
-            <Text fontSize="lg" className={styles.tagText}>
+        <Tooltip
+          key={tag}
+          label={tag}
+          isDisabled={!needTooltip}
+          hasArrow
+          bg="secondary"
+        >
+          <Tag className={styles.tag} onClick={onClick} as={GridItem}>
+            <Text fontSize="lg" color="white">
               {tag}
             </Text>
           </Tag>
@@ -118,14 +119,16 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
       {component}
       {!loading && (
         <Button colorScheme="blue" variant="ghost" onClick={onToggle}>
-          <Text fontSize="lg">
+          <Text fontSize="lg" className={styles.fontColor}>
             {isOpen ? "View less tags" : "Show more tags"}
           </Text>
         </Button>
       )}
       {(isSelectedTag || isSearched) && (
-        <Button colorScheme="blue" variant="ghost" onClick={handleCleanFilter}>
-          <Text fontSize="lg">clean filter</Text>
+        <Button variant="ghost" onClick={handleCleanFilter}>
+          <Text fontSize="lg" className={styles.fontColor}>
+            clean filter
+          </Text>
         </Button>
       )}
     </div>

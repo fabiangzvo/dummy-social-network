@@ -10,13 +10,13 @@ const GENERAL_INFORMATION_LIST: UserDataList = [
     key: "phone",
     label: "Phone",
     icon: <LuPhone size="0.9em" />,
-    color: "#FEB2B2",
+    color: "primary",
   },
   {
     key: "email",
     label: "Email",
     icon: <MdOutlineEmail size="0.9em" />,
-    color: "#FEB2B2",
+    color: "primary",
   },
   {
     key: "dateOfBirth",
