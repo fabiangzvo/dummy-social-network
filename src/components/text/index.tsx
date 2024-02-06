@@ -19,7 +19,7 @@ function Text(props: TextComponentProps) {
   return (
     <ChakraText
       className={cs({
-        [className]: true,
+        [className]: !!className,
         [styles.text]: !isSecondary,
         [styles.paragraph]: isSecondary,
       })}

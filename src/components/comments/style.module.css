@@ -1,12 +1,9 @@
 .image {
   width: 100%;
   object-fit: contain;
-  max-height: 50vh;
 }
 
 .container {
-  margin-top: 2em;
-  margin-bottom: 2em;
   width: 100%;
 }
 
@@ -22,4 +19,27 @@
 
 .section {
   margin-left: 1em;
+  padding-top: 1em;
+}
+
+#lgModalBody{
+  margin:0em 0em 0em 0em;
+  padding-inline-start:0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 5px;
+  overflow: hidden;
+}
+
+#lgModalBody>ul{
+  margin:0em 0.5em 1em 0.5em;
+  padding-right: 5px;
+}
+
+#modalBody{
+  margin:0em 1em 0em 0em;
+  padding-inline-start:0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
 }

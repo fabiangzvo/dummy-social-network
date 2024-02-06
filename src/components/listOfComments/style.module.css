@@ -6,8 +6,6 @@
 }
 
 .list {
-  margin-top: 1em;
-  height: 555px;
   overflow-y: auto;
   padding-right: 1em;
   padding-left: 1em;

@@ -1,4 +1,4 @@
-.containerBody {
+#containerBody {
   display: flex;
   flex-direction: column;
   justify-content: center;

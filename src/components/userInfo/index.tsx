@@ -39,15 +39,9 @@ function UserInfo(props: UserInfoProps) {
   if (!userInfo) null;
 
   return (
-    <Modal
-      onClose={onClose}
-      isOpen={isOpen}
-      containerClass={styles.containerBody}
-    >
+    <Modal onClose={onClose} isOpen={isOpen} bodyId={styles.containerBody}>
       <Avatar src={userInfo.picture} size="2xl" name={userInfo.firstName} />
-      <Text fontSize="4xl">
-        {userInfo.firstName} {userInfo.lastName}
-      </Text>
+      <Text fontSize="4xl">{`${userInfo.firstName} ${userInfo.lastName}`}</Text>
       <UserInfoSection
         items={GENERAL_INFORMATION_LIST}
         title="General information"

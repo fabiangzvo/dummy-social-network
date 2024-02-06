@@ -11,7 +11,7 @@ interface ModalProps {
   onClose: () => void;
   isOpen: boolean;
   children: ReactNode;
-  containerClass?: string;
+  bodyId?: string;
   size?: string;
   modalContentId?: string;
 }
@@ -21,7 +21,7 @@ function Modal(props: ModalProps) {
     children,
     isOpen,
     onClose,
-    containerClass,
+    bodyId,
     size = "4xl",
     modalContentId,
   } = props;
@@ -37,7 +37,7 @@ function Modal(props: ModalProps) {
       <ModalOverlay />
       <ModalContent className={modalContentId}>
         <ModalCloseButton />
-        <ModalBody className={containerClass}>{children}</ModalBody>
+        <ModalBody id={bodyId}>{children}</ModalBody>
       </ModalContent>
     </ChakraModal>
   );

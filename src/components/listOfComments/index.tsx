@@ -10,10 +10,11 @@ import styles from "./style.module.css";
 
 interface ListOfComments {
   comments: CommentList;
+  height: string | number;
 }
 
 function CommentList(props: ListOfComments) {
-  const { comments } = props;
+  const { comments, height } = props;
 
   const commentList = useMemo(
     () =>
@@ -47,7 +48,7 @@ function CommentList(props: ListOfComments) {
     );
 
   return (
-    <List className={styles.list} spacing={3}>
+    <List className={styles.list} spacing={3} height={height}>
       {commentList}
     </List>
   );

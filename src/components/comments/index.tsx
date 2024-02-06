@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Image from "next/image";
+import ImageComponent from "next/image";
 import { SimpleGrid, Box, Divider } from "@chakra-ui/react";
 
 import Modal from "@components/modal";
@@ -39,6 +39,7 @@ function Comments(props: CommentsProps) {
   } = props;
 
   const [comments, setComments] = useState([] as CommentList);
+  const [height, setHeight] = useState<string | number>("auto");
   const isLg = useMediaQuery("(max-width: 1024px)");
 
   const fetchData = useCallback(
@@ -61,18 +62,33 @@ function Comments(props: CommentsProps) {
 
   const { ref, loading, page } = useDataFetch({ fetchData });
 
-  const element = loading ? <Loader /> : <ListOfComments comments={comments} />;
+  const element = loading ? (
+    <Loader />
+  ) : (
+    <ListOfComments
+      height={typeof height === "number" && !isLg ? height - 140 : "40vh"}
+      comments={comments}
+    />
+  );
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen} size="6xl">
+    <Modal
+      onClose={onClose}
+      isOpen={isOpen}
+      size="6xl"
+      bodyId={isLg ? styles.lgModalBody : styles.modalBody}
+    >
       <SimpleGrid
         className={styles.container}
-        minH={isLg ? "auto" : "50vh"}
+        minH="auto"
         columns={2}
         spacing={2}
       >
         <Box>
-          <Image
+          <ImageComponent
+            onLoad={function (e) {
+              setHeight(isLg ? "40vh" : e.currentTarget.height);
+            }}
             className={styles.image}
             src={image}
             width={500}
@@ -81,7 +97,7 @@ function Comments(props: CommentsProps) {
             priority
           />
         </Box>
-        <Box className={styles.section}>
+        <Box className={styles.section} height={height}>
           <UserCardHeader
             fullName={name}
             photo={photo}

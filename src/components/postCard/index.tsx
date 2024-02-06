@@ -65,7 +65,7 @@ function PostCard(props: PostCardProps) {
         />
       </div>
       <div className={styles.tagContainer}>{tagList}</div>
-      <Text fontSize="xl" style={{ paddingLeft: 15 }}>
+      <Text fontSize="xl" style={{ paddingLeft: 15, paddingRight: 15 }}>
         {text}
       </Text>
       <CardFooter
