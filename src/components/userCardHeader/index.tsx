@@ -33,7 +33,11 @@ function UserCardHeader(props: UserCardHeaderProps) {
             <Avatar name={fullName} src={photo} />
             <Box>
               <Heading size="md">{fullName}</Heading>
-              {textSecondary && <Text fontSize="md">{textSecondary}</Text>}
+              {textSecondary && (
+                <Text fontSize="md" isSecondary>
+                  {textSecondary}
+                </Text>
+              )}
             </Box>
           </div>
           {!!ownerId && (

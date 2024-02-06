@@ -1,9 +1,9 @@
-.text {
+.paragraph {
     color: var(--paragraph);
     cursor: default;
 }
 
-.title {
-    color: var(--title);
+.text {
+    color: var(--text);
     cursor: default;
 }

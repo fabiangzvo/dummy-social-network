@@ -25,7 +25,7 @@
 }
 
 .handle>svg {
-    fill: var(--title);
+    fill: var(--text);
     height: .7em;
     width: .7em;
 }

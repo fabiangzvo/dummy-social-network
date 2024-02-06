@@ -1,6 +1,6 @@
 html[data-theme="light"] {
   --background: #FFFFFE;
-  --title: #0F0A0B;
+  --text: #0F0A0B;
   --paragraph: #6c757d;
   --primary: #F93943;
   --secondary: #F6AE6A;
@@ -10,7 +10,7 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
   --background: #000000;
-  --title: #F5F0F1;
+  --text: #F5F0F1;
   --paragraph: #a7a9be;
   --primary: #C60610;
   --secondary: #954D09;

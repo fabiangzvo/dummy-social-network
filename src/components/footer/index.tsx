@@ -11,23 +11,13 @@ function Footer() {
   return (
     <footer className={isMd ? styles.mdContainer : styles.container}>
       <div className={styles.leftContent} style={{ order: isMd ? 2 : 1 }}>
-        <Text
-          fontSize={isLg ? "lg" : "xl"}
-          className={styles.fontColor}
-          fontWeight={900}
-        >
+        <Text fontSize={isLg ? "lg" : "xl"} fontWeight={900}>
           Dummy app
         </Text>
-        <Text fontSize={isLg ? "sm" : "lg"} className={styles.fontColor}>
-          All rights reserved © 2024
-        </Text>
+        <Text fontSize={isLg ? "sm" : "lg"}>All rights reserved © 2024</Text>
       </div>
       <div style={{ order: isMd ? 1 : 2 }}>
-        <Text
-          fontSize={isLg ? "sm" : "lg"}
-          className={styles.fontColor}
-          fontWeight="bold"
-        >
+        <Text fontSize={isLg ? "sm" : "lg"} fontWeight="bold">
           Follow me:&nbsp;
         </Text>
         <SocialNetwork />

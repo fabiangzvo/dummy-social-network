@@ -43,7 +43,7 @@ const theme = {
   },
   colors: {
     background: "var(--background)",
-    text: "var(--title)",
+    text: "var(--text)",
     primary: "var(--primary)",
     secondary: "var(--secondary)",
     accent: "var(--accent)",
@@ -54,7 +54,7 @@ const theme = {
     global: {
       body: {
         bg: "var(--background)",
-        color: "var(--title)",
+        color: "var(--text)",
       },
     },
   },

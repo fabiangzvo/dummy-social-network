@@ -119,16 +119,14 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
       {component}
       {!loading && (
         <Button colorScheme="blue" variant="ghost" onClick={onToggle}>
-          <Text fontSize="lg" className={styles.fontColor}>
+          <Text fontSize="lg">
             {isOpen ? "View less tags" : "Show more tags"}
           </Text>
         </Button>
       )}
       {(isSelectedTag || isSearched) && (
         <Button variant="ghost" onClick={handleCleanFilter}>
-          <Text fontSize="lg" className={styles.fontColor}>
-            clean filter
-          </Text>
+          <Text fontSize="lg">clean filter</Text>
         </Button>
       )}
     </div>

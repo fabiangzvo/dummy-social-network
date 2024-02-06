@@ -118,7 +118,7 @@ function Login() {
           <Heading id={styles.title} size="4xl">
             dummy social network!
           </Heading>
-          <Text id={styles.description} fontSize="2xl">
+          <Text id={styles.description} fontSize="2xl" isSecondary>
             Our app is designed to connect you in an authentic way. Discover a
             unique experience beyond the conventional.
           </Text>

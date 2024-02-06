@@ -37,10 +37,6 @@
   overflow: hidden;
 }
 
-.fontColor {
-  color: var(--title);
-}
-
 .containerTags{
   margin-bottom: 0.5em;
 }

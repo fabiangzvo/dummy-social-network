@@ -10,18 +10,18 @@ const figtree = Figtree({
 });
 
 interface TextComponentProps extends TextProps {
-  isTitle?: boolean;
+  isSecondary?: boolean;
 }
 
 function Text(props: TextComponentProps) {
-  const { isTitle = false, children, className = "", ...textProps } = props;
+  const { isSecondary = false, children, className = "", ...textProps } = props;
 
   return (
     <ChakraText
       className={cs({
         [className]: true,
-        [styles.text]: !isTitle,
-        [styles.title]: isTitle,
+        [styles.text]: !isSecondary,
+        [styles.paragraph]: isSecondary,
       })}
       style={figtree.style}
       {...textProps}

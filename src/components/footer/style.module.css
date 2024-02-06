@@ -38,7 +38,6 @@
   flex-direction: column;
 }
 
-.fontColor {
+.cursor {
   cursor: default;
-  color: var(--title);
 }

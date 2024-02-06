@@ -87,7 +87,7 @@ function Comments(props: CommentsProps) {
             photo={photo}
             textSecondary={publishedAt}
           />
-          <Text className={styles.description} fontSize="xl" isTitle>
+          <Text className={styles.description} fontSize="xl">
             {description}
           </Text>
           <Divider />

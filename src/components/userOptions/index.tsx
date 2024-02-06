@@ -42,7 +42,7 @@ function UserOptions() {
 
   const element = (
     <div className={isLg ? styles.contentCentered : styles.content}>
-      <Text className={styles.name} fontSize="xl" isTitle>
+      <Text className={styles.name} fontSize="xl">
         {user?.name}
       </Text>
       <Text fontSize="md">{user?.email}</Text>

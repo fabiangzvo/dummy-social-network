@@ -6,6 +6,5 @@
 
 .title {
   font-weight: bold;
-  color: var(--title);
-    background-color: var(--background);
+  background-color: var(--background);
 }
