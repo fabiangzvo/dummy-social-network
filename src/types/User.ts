@@ -25,6 +25,8 @@ export interface UserInfoItem {
   icon?: ReactNode;
   type?: "text" | "date";
   color?: string;
+  size?: "full" | "medium";
+  bg?: string;
 }
 
 export type UserDataList = Array<UserInfoItem>;

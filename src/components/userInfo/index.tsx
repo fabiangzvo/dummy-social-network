@@ -42,11 +42,10 @@ function UserInfo(props: UserInfoProps) {
     <Modal onClose={onClose} isOpen={isOpen} bodyId={styles.containerBody}>
       <Avatar src={userInfo.picture} size="2xl" name={userInfo.firstName} />
       <Text fontSize="4xl">{`${userInfo.firstName} ${userInfo.lastName}`}</Text>
-      <UserInfoSection
-        items={GENERAL_INFORMATION_LIST}
-        title="General information"
-        user={userInfo}
-      />
+      <Text fontSize="xl" isSecondary>
+        {userInfo.email}
+      </Text>
+      <UserInfoSection items={GENERAL_INFORMATION_LIST} user={userInfo} />
       <UserInfoSection
         items={LOCATION_INFORMATION_LIST}
         title="Location"

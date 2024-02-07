@@ -75,6 +75,7 @@ function ListOfTags(props: ListOfTagsProps): JSX.Element {
           isDisabled={!needTooltip}
           hasArrow
           bg="secondary"
+          color="white"
         >
           <Tag className={styles.tag} onClick={onClick} as={GridItem}>
             <Text fontSize="lg" color="white">

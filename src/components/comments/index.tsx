@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { ReactEventHandler, useCallback, useState } from "react";
 import ImageComponent from "next/image";
 import { SimpleGrid, Box, Divider } from "@chakra-ui/react";
 
@@ -60,6 +60,11 @@ function Comments(props: CommentsProps) {
     [comments, postId]
   );
 
+  const handleLoad = useCallback<ReactEventHandler<HTMLImageElement>>(
+    (e) => setHeight(isLg ? "40vh" : e.currentTarget.height),
+    [isLg]
+  );
+
   const { ref, loading, page } = useDataFetch({ fetchData });
 
   const element = loading ? (
@@ -86,9 +91,7 @@ function Comments(props: CommentsProps) {
       >
         <Box>
           <ImageComponent
-            onLoad={function (e) {
-              setHeight(isLg ? "40vh" : e.currentTarget.height);
-            }}
+            onLoad={handleLoad}
             className={styles.image}
             src={image}
             width={500}

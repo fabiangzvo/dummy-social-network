@@ -1,6 +1,5 @@
 import { TbGenderBigender } from "react-icons/tb";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
-import { MdOutlineEmail } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 
 import { UserDataList } from "@/types/User";
@@ -10,13 +9,8 @@ const GENERAL_INFORMATION_LIST: UserDataList = [
     key: "phone",
     label: "Phone",
     icon: <LuPhone size="0.9em" />,
-    color: "primary",
-  },
-  {
-    key: "email",
-    label: "Email",
-    icon: <MdOutlineEmail size="0.9em" />,
-    color: "primary",
+    bg: "primary",
+    size: "full",
   },
   {
     key: "dateOfBirth",

@@ -3,7 +3,7 @@ html[data-theme="light"] {
   --text: #0F0A0B;
   --paragraph: #6c757d;
   --primary: #F93943;
-  --secondary: #F6AE6A;
+  --secondary: #a71e34;
   --accent: #FFDA05;
   --shadow: #e9ecef;
 }
@@ -13,7 +13,7 @@ html[data-theme="dark"] {
   --text: #F5F0F1;
   --paragraph: #a7a9be;
   --primary: #C60610;
-  --secondary: #954D09;
+  --secondary: #ff4d6d;
   --accent: #FAD400;
   --shadow: #202020;
 }

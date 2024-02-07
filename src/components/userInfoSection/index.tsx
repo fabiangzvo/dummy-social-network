@@ -10,7 +10,7 @@ import { useMediaQuery } from "@hooks/useMediaQuery";
 import styles from "./style.module.css";
 
 interface UserInfoSectionProps {
-  title: string;
+  title?: string;
   items: UserDataList;
   user: UserFull;
 }
@@ -25,22 +25,35 @@ function UserInfoSection(props: UserInfoSectionProps) {
       items.map(({ key, ...item }) => {
         const value = _get(user, key);
 
-        return <UserInfoItem key={key} {...item} value={value} />;
+        return <UserInfoItem key={key} {...item} value={value} isLg={isLg} />;
       }),
-    [user, items]
+    [user, items, isLg]
+  );
+
+  const titleComponent = useMemo(
+    () =>
+      title ? (
+        <Box className={styles.divider}>
+          <Divider />
+          <AbsoluteCenter px="4">
+            <Text fontSize="2xl" className={styles.title}>
+              {title}
+            </Text>
+          </AbsoluteCenter>
+        </Box>
+      ) : null,
+    [title]
   );
 
   return (
     <>
-      <Box className={styles.divider}>
-        <Divider />
-        <AbsoluteCenter px="4">
-          <Text fontSize="2xl" className={styles.title}>
-            {title}
-          </Text>
-        </AbsoluteCenter>
-      </Box>
-      <SimpleGrid width="100%" columns={isLg ? 1 : 2} spacing={2}>
+      {titleComponent}
+      <SimpleGrid
+        width="100%"
+        columns={isLg ? 1 : 2}
+        marginTop={!title ? "3em" : "auto"}
+        spacing={2}
+      >
         {fields}
       </SimpleGrid>
     </>
